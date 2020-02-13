@@ -9,7 +9,7 @@ my $first = 1;
 my @lines; # Users to store /proc/interrupts
 
 sub catInterrupts {
-    for (`/bin/cat /proc/interrupts`)
+    for (`/usr/bin/env cat /proc/interrupts`)
     {
         push @lines, $_; # Store the current line into the array
         print "DEBUG: Pushed => $_" if DEBUG;
