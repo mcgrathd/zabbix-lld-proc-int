@@ -42,3 +42,41 @@ BEGIN {
 }
 
 __END__
+
+=pod
+
+=head1 NAME
+
+proc_interrupts.pl - Linux interrupts Zabbix LLD script
+
+=head1 SYNOPSIS
+
+TODO
+
+=head1 DESCRIPTION
+
+Output JSON formatted values of /proc/interrupts for Zabbix consumption.
+
+=head1 FUNCTIONS
+
+=over
+
+=item catInterrupts()
+
+Store the contents of /proc/interrupts into the global array @lines.
+
+=item display()
+
+Display the contents of the @lines array, unless DEBUG is set.
+
+=back
+
+=head1 LICENSE
+
+TODO
+
+=head1 AUTHOR
+
+Danny J. McGrath <danmcgrath.ca@gmail.com>
+
+=cut
