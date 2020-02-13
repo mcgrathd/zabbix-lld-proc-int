@@ -8,6 +8,14 @@ use constant DEBUG => 0;
 my $first = 1;
 my @lines; # Users to store /proc/interrupts
 
+sub catInterrupts {
+    for (`/bin/cat /proc/interrupts`)
+    {
+        push @lines, $_; # Store the current line into the array
+        print "DEBUG: Pushed => $_" if DEBUG;
+    }
+}
+
 sub display {
     print "{\n";
     print "\t\"data\":[\n\n";
@@ -29,6 +37,7 @@ sub display {
 }
 
 BEGIN {
+    catInterrupts;
     display;
 }
 
