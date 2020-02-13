@@ -5,7 +5,6 @@
 use warnings;
 use strict;
 use constant DEBUG => 0;
-my $first = 1;
 my @lines; # Users to store /proc/interrupts
 
 sub catInterrupts {
@@ -18,6 +17,8 @@ sub catInterrupts {
 }
 
 sub display {
+    my $first = 1; # Is this the first item?
+
     print "{\n";
     print "\t\"data\":[\n\n";
 
