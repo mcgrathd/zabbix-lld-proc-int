@@ -6,6 +6,7 @@ use warnings;
 use strict;
 use constant DEBUG => 0;
 my @lines; # Users to store /proc/interrupts
+my %interrupts; # Split storage of interrupts into key/value pairs
 
 sub catInterrupts {
     for (`/usr/bin/env cat /proc/interrupts`)
