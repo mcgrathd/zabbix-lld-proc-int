@@ -1,7 +1,6 @@
 #!/usr/bin/env perl
 #
-# Zabbix device discovery to monitor Linux devices
-# https://www.kernel.org/doc/Documentation/iostats.txt 
+# Zabbix device discovery to monitor Linux CPU interrupts
 
 $first = 1;
  
