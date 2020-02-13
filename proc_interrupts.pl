@@ -6,6 +6,7 @@ use warnings;
 use strict;
 use constant DEBUG => 0;
 my $first = 1;
+my @lines; # Users to store /proc/interrupts
 
 sub display {
     print "{\n";
