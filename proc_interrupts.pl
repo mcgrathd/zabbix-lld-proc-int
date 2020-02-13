@@ -3,15 +3,16 @@
 # Zabbix device discovery to monitor Linux CPU interrupts
 
 use warnings;
+use strict;
 use constant DEBUG => 0;
-$first = 1;
+my $first = 1;
  
 print "{\n";
 print "\t\"data\":[\n\n";
  
 for (`/bin/cat /proc/diskstats | /usr/bin/awk '{ print \$3 }'`)
 {
-    ($device) = m/(\S+)/;
+    (my $device) = m/(\S+)/;
 
     print "\t,\n" if not $first;
     $first = 0;
