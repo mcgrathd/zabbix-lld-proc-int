@@ -2,6 +2,7 @@
 #
 # Zabbix device discovery to monitor Linux CPU interrupts
 
+use warnings;
 use constant DEBUG => 0;
 $first = 1;
  
