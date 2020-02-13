@@ -11,8 +11,9 @@ my @lines; # Users to store /proc/interrupts
 sub catInterrupts {
     for (`/usr/bin/env cat /proc/interrupts`)
     {
+        chomp;
         push @lines, $_; # Store the current line into the array
-        print "DEBUG: Pushed => $_" if DEBUG;
+        print "DEBUG: Pushed => $_\n" if DEBUG;
     }
 }
 
