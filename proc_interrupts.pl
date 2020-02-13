@@ -22,15 +22,13 @@ sub display {
     print "{\n";
     print "\t\"data\":[\n\n";
 
-    for (`/bin/cat /proc/diskstats | /usr/bin/awk '{ print \$3 }'`)
+    foreach my $i (0 .. $#lines)
     {
-        (my $device) = m/(\S+)/;
-
         print "\t,\n" if not $first;
         $first = 0;
 
         print "\t{\n";
-        print "\t\t\"{#DEVICE}\":\"$device\"\n";
+        print "\t\t\"{#DEVICE}\":\"$lines[$i]\"\n";
         print "\t}\n";
     }
 
