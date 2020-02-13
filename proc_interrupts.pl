@@ -27,3 +27,8 @@ sub display {
     print "}\n";
 }
 
+BEGIN {
+    display;
+}
+
+__END__
