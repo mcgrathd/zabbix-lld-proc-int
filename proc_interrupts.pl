@@ -144,6 +144,10 @@ Output JSON formatted values of /proc/interrupts for Zabbix consumption.
 
 Store the contents of /proc/interrupts into the global array @lines.
 
+=item parseInterrupts()
+
+Split the @lines array into the component fields, indexed by CPU number.
+
 =item display()
 
 Display the contents of the @lines array, unless DEBUG is set.
