@@ -18,6 +18,15 @@ my @lines;
 # Split storage of interrupts into key/value pairs
 my %interrupts;
 
+#
+# Getopt variables
+#
+
+# What CPU to display
+my $optCpu;
+# What interrupt to display
+my $optInt;
+
 
 #
 # Sub routines
