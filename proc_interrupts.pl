@@ -92,7 +92,7 @@ sub parseInterrupts {
     }
 }
 
-sub display {
+sub displayInterrupts {
     my $first = 1; # Is this the first item?
 
     print "{\n";
@@ -115,7 +115,7 @@ sub display {
 BEGIN {
     catInterrupts;
     parseInterrupts;
-    display;
+    displayInterrupts;
 }
 
 __END__
@@ -146,7 +146,7 @@ Store the contents of /proc/interrupts into the global array @lines.
 
 Split the @lines array into the component fields, indexed by CPU number.
 
-=item display()
+=item displayInterrupts()
 
 Display the contents of the @lines array, unless DEBUG is set.
 
