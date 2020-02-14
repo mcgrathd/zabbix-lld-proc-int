@@ -157,7 +157,8 @@ Split the @lines array into the component fields, indexed by CPU number.
 
 =item displayInterrupts()
 
-Display the contents of the @lines array, unless DEBUG is set.
+Display the contents of the @lines array, unless DEBUG is set. The format used
+can be found at the L<Zabbix LLD documentation|https://www.zabbix.com/documentation/4.2/manual/discovery/low_level_discovery/>.
 
 =back
 
