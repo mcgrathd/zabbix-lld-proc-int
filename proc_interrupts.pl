@@ -128,6 +128,23 @@ sub displayInterrupts {
 }
 
 
+sub helpMessage {
+    print "Usage: $0 [OPTIONS] ...\n\n";
+
+    print "If you specificy cpu, you must specify an interrupt name.\n";
+    print "If you don't specify any options, it is assumed that you\n";
+    print "want to output the JSON fields to be consumed by Zabbix.\n\n";
+
+    print "Options:\n";
+    print "\t-c, --cpu\t\t\tCPU name\n";
+    print "\t-i, --int\t\t\tInterrupt name\n";
+    print "\t-d, --debug\t\t\tEnable debug prints\n";
+    print "\t-h, --help\t\t\tThis help\n";
+
+    exit;
+}
+
+
 #
 # Main code block
 #
@@ -136,7 +153,7 @@ BEGIN {
         'cpu|c=s'  => \$optCpu,
         'int|i=s'  => \$optInt,
         'debug|d'  => \$optDebug,
-        'help|h'   => \$optHelp,
+        'help|h'   => sub { helpMessage() },
     ) or die "Usage $0 --help\n";
 
     catInterrupts;
@@ -178,6 +195,10 @@ Split the @lines array into the component fields, indexed by CPU number.
 
 Display the contents of the @lines array, unless $optDebug is set. The format used
 can be found at the L<Zabbix LLD documentation|https://www.zabbix.com/documentation/4.2/manual/discovery/low_level_discovery/>.
+
+=item helpMesage()
+
+Show the usage for the problem and then exit.
 
 =back
 
