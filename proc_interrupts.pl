@@ -2,22 +2,41 @@
 #
 # Zabbix device discovery to monitor Linux CPU interrupts
 
+#
+# Use section
+#
 use warnings;
 use strict;
 use constant DEBUG => 0;
-my @lines; # Used to store /proc/interrupts
-my %interrupts; # Split storage of interrupts into key/value pairs
+
+#
+# Globals
+#
+# Used to store /proc/interrupts
+my @lines;
+# Split storage of interrupts into key/value pairs
+my %interrupts;
+
+
+#
+# Sub routines
+#
 
 sub catInterrupts {
     for (`/usr/bin/env cat /proc/interrupts`)
     {
+        # Remove the newline
         chomp;
-        push @lines, $_; # Store the current line into the array
+
+        # Store the current line into the array
+        push @lines, $_;
     }
 }
 
+
 sub parseInterrupts {
-    my $cpuNum = 0; # Index into array for current CPU during loops
+    # Index into array for current CPU during loops
+    my $cpuNum = 0;
 
     # Store the first line of /proc/interrupts into $line0
     my $line0 = $lines[0];
@@ -64,9 +83,12 @@ sub parseInterrupts {
     }
 }
 
-sub displayInterrupts {
-    my $first = 1; # Is this the first item?
 
+sub displayInterrupts {
+    # Is this the first item?
+    my $first = 1;
+
+    # Display JSON header
     print "{\n";
     print "\t\"data\":[\n\n";
 
@@ -78,18 +100,25 @@ sub displayInterrupts {
         print "\t{\n";
         print "\t\t\"{#CPU}\":\"$cpu\",\n";
 
-        # for each key
+        # for each cpu, display the fields
         foreach my $key (keys %{ $interrupts{$cpu} })
         {
             print "\t\t\"{#INT}\":\"$key\",\n";
         }
+
+        # End of fields delimeter
         print "\t}\n";
     }
 
+    # Display JSON footer
     print "\n\t]\n";
     print "}\n";
 }
 
+
+#
+# Main code block
+#
 BEGIN {
     catInterrupts;
     parseInterrupts;
