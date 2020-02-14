@@ -133,9 +133,9 @@ sub displayInterrupts {
 #
 BEGIN {
     GetOptions(
-        'cpu=s'  => \$optCpu,
-        'int=s'  => \$optInt,
-        'help=s' => \$optHelp,
+        'cpu|c=s'  => \$optCpu,
+        'int|i=s'  => \$optInt,
+        'help|h=s' => \$optHelp,
     ) or die "Usage $0 --help\n";
 
     catInterrupts;
