@@ -104,7 +104,13 @@ sub displayInterrupts {
         $first = 0;
 
         print "\t{\n";
-        print "\t\t\"{#CPU}\":\"$cpu\"\n";
+        print "\t\t\"{#CPU}\":\"$cpu\",\n";
+
+        # for each key
+        foreach my $key (keys %{ $interrupts{$cpu} })
+        {
+            print "\t\t\"{#INT}\":\"$key\",\n";
+        }
         print "\t}\n";
     }
 
