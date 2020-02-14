@@ -136,7 +136,7 @@ BEGIN {
         'cpu|c=s'  => \$optCpu,
         'int|i=s'  => \$optInt,
         'debug|d'  => \$optDebug,
-        'help|h' => \$optHelp,
+        'help|h'   => \$optHelp,
     ) or die "Usage $0 --help\n";
 
     catInterrupts;
