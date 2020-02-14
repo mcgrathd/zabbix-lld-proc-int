@@ -81,6 +81,7 @@ sub parseInterrupts {
     }
     foreach my $cpu (keys %interrupts)
     {
+        next unless DEBUG;
         print "$cpu\n";
         print '=' x length($cpu), "\n";
         foreach my $int (keys %{ $interrupts{$cpu} })
