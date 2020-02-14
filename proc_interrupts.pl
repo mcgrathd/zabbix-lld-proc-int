@@ -173,7 +173,18 @@ proc_interrupts.pl - Linux interrupts Zabbix LLD script
 
 =head1 SYNOPSIS
 
-TODO
+Usage: proc_interrupts.pl [OPTIONS] ...
+
+If you specificy cpu, you must specify an interrupt name.  If you don't specify
+any options, it is assumed that you want to output the JSON fields to be
+consumed by Zabbix.
+
+Options:
+
+	-c, --cpu			CPU name
+	-i, --int			Interrupt name
+	-d, --debug			Enable debug prints
+	-h, --help			This help
 
 =head1 DESCRIPTION
 
