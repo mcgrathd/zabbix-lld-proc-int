@@ -130,6 +130,11 @@ sub displayInterrupts {
 # Main code block
 #
 BEGIN {
+    GetOptions(
+        'cpu=s'  => \$optCpu,
+        'int=s'  => \$optInt,
+    ) or die "Usage $0 --help\n";
+
     catInterrupts;
     parseInterrupts;
     displayInterrupts;
