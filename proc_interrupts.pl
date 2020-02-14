@@ -4,6 +4,7 @@
 
 use warnings;
 use strict;
+use Data::Dumper qw(Dumper);
 use constant DEBUG => 0;
 my @lines; # Used to store /proc/interrupts
 my %interrupts; # Split storage of interrupts into key/value pairs
@@ -14,6 +15,82 @@ sub catInterrupts {
         chomp;
         push @lines, $_; # Store the current line into the array
         print "DEBUG: Pushed => $_\n" if DEBUG;
+    }
+}
+
+sub parseInterrupts {
+    # Store the first line of /proc/interrupts into $line0
+    my $line0 = $lines[0];
+
+    # strip preceding/trailing whitespace
+    $line0 =~ s/^\s+|\s+$//g;
+
+    # strip in between word whitespace
+    $line0 =~ s/\ \ */\ /g;
+
+    # Store cpus in array
+    my @cpus = split / /, $line0;
+
+    # The cpu count is the number of array items
+    my $cpuCount = $#cpus;
+
+    if (DEBUG) {
+        print "DEBUG: line0 = $line0\n" if DEBUG;
+        print "DEBUG: lines[0] = $lines[0]\n" if DEBUG;
+        print "DEBUG: cpuCount = $cpuCount\n" if DEBUG;
+        print "DEBUG: " . Dumper \@cpus if DEBUG;
+    }
+
+    # For each CPU in /proc/interrupts, set values in hash
+    foreach my $cpu (@cpus)
+    {
+        print "DEBUG: Loop: $cpu\n" if DEBUG;
+
+        # For each line, skipping 0th array, since we have @cpus now
+        foreach my $line (1 .. $#lines)
+        {
+            # for eachline, split fields into cpuNum and intName
+            # Some variables
+            my $cpuNum; # primary key for the hash
+            my $intName; # Name of the interrupt
+            my $intValue; # Value for this particular CPU interrupt
+
+            # eg:
+            #$interrupts{'CPU0'}->{'MCE'} = 0;
+            #$interrupts{'CPU0'}->{'TRM'} = 0;
+            #$interrupts{'CPU1'}->{'MCE'} = 10;
+            #$interrupts{'CPU1'}->{'TRM'} = 0;
+
+            # Trim whitespace from line
+            $lines[$line] =~ s/^\s+|\s+$//g;
+            $lines[$line] =~ s/\ \ */\ /g;
+            # Split the line into components
+            my @fields = split / /, $lines[$line];
+            foreach my $field (@fields)
+            {
+                print "Field: $field\n";
+            }
+            # Calculate the appriate index for the current CPU
+            my $index = ($line - 1); # -1 to make it zero based
+
+            print "VALUE: $fields[$index]\n";
+            # Set the hash value
+            #$interrupts{$cpu}->{$key} = $value;
+
+            #print "DEBUG: index = $index\n" if DEBUG;
+            #print "DEBUG: hash = $fields[$index]\n" if DEBUG;
+            #print "DEBUG: line = $lines[$line]\n" if DEBUG;
+        }
+    }
+    foreach my $cpu (keys %interrupts)
+    {
+        print "$cpu\n";
+        print '=' x length($cpu), "\n";
+        foreach my $int (keys %{ $interrupts{$cpu} })
+        {
+            print "$int: $interrupts{$cpu}->{$int}\n";
+        }
+        print "\n";
     }
 }
 
@@ -39,6 +116,7 @@ sub display {
 
 BEGIN {
     catInterrupts;
+    parseInterrupts;
     display;
 }
 
