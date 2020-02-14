@@ -19,6 +19,8 @@ sub catInterrupts {
 }
 
 sub parseInterrupts {
+    my $cpuNum = 0; # Index into array for current CPU during loops
+
     # Store the first line of /proc/interrupts into $line0
     my $line0 = $lines[0];
 
@@ -44,17 +46,12 @@ sub parseInterrupts {
     # For each CPU in /proc/interrupts, set values in hash
     foreach my $cpu (@cpus)
     {
-        print "DEBUG: Loop: $cpu\n" if DEBUG;
+        $cpuNum++;
+        print "DEBUG: Loop: $cpu ($cpuNum)\n" if DEBUG;
 
         # For each line, skipping 0th array, since we have @cpus now
         foreach my $line (1 .. $#lines)
         {
-            # for eachline, split fields into cpuNum and intName
-            # Some variables
-            my $cpuNum; # primary key for the hash
-            my $intName; # Name of the interrupt
-            my $intValue; # Value for this particular CPU interrupt
-
             # eg:
             #$interrupts{'CPU0'}->{'MCE'} = 0;
             #$interrupts{'CPU0'}->{'TRM'} = 0;
@@ -64,22 +61,22 @@ sub parseInterrupts {
             # Trim whitespace from line
             $lines[$line] =~ s/^\s+|\s+$//g;
             $lines[$line] =~ s/\ \ */\ /g;
+
             # Split the line into components
             my @fields = split / /, $lines[$line];
             foreach my $field (@fields)
             {
-                print "Field: $field\n";
+                print "DEBUG: Field: $field\n" if DEBUG;
             }
-            # Calculate the appriate index for the current CPU
-            my $index = ($line - 1); # -1 to make it zero based
 
-            print "VALUE: $fields[$index]\n";
+            # Remove colon from first element
+            $fields[0] =~ s/://;
+
+            print "DEBUG: cpuNum = $cpuNum\n" if DEBUG;
+            print "DEBUG: @fields: \n" . Dumper(@fields) . "\n" if DEBUG;
+
             # Set the hash value
-            #$interrupts{$cpu}->{$key} = $value;
-
-            #print "DEBUG: index = $index\n" if DEBUG;
-            #print "DEBUG: hash = $fields[$index]\n" if DEBUG;
-            #print "DEBUG: line = $lines[$line]\n" if DEBUG;
+            $interrupts{$cpu}->{$fields[0]} = $fields[$cpuNum];
         }
     }
     foreach my $cpu (keys %interrupts)
