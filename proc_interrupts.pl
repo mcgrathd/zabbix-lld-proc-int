@@ -163,7 +163,7 @@ Display the contents of the @lines array, unless DEBUG is set.
 
 =head1 LICENSE
 
-Copyright © 2020 Blender Foundation.  License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
+Copyright © 2020 Blender Foundation.  License GPLv3+: GNU GPL version 3 or later L<http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.  There is NO WARRANTY, to the extent permitted by law.
 
 =head1 AUTHOR
