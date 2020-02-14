@@ -98,13 +98,13 @@ sub display {
     print "{\n";
     print "\t\"data\":[\n\n";
 
-    foreach my $i (0 .. $#lines)
+    foreach my $cpu (keys %interrupts)
     {
         print "\t,\n" if not $first;
         $first = 0;
 
         print "\t{\n";
-        print "\t\t\"{#DEVICE}\":\"$lines[$i]\"\n";
+        print "\t\t\"{#CPU}\":\"$cpu\"\n";
         print "\t}\n";
     }
 
