@@ -119,13 +119,13 @@ sub displayInterrupts {
     print "{\n";
     print "\t\"data\":[\n\n";
 
-    foreach my $cpu (keys %interrupts)
+    foreach my $cpu (sort keys %interrupts)
     {
         print "\t,\n" if not $first;
         $first = 0;
 
         # for each cpu, display the fields
-        foreach my $key (keys %{ $interrupts{$cpu} })
+        foreach my $key (sort keys %{ $interrupts{$cpu} })
         {
             print "\t{\n";
             print "\t\t\"{#CPU}\":\"$cpu\",\n";
