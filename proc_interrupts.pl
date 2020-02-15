@@ -124,17 +124,16 @@ sub displayInterrupts {
         print "\t,\n" if not $first;
         $first = 0;
 
-        print "\t{\n";
-        print "\t\t\"{#CPU}\":\"$cpu\",\n";
-
         # for each cpu, display the fields
         foreach my $key (keys %{ $interrupts{$cpu} })
         {
-            print "\t\t\"{#INT}\":\"$key\",\n";
-        }
+            print "\t{\n";
+            print "\t\t\"{#CPU}\":\"$cpu\",\n";
+            print "\t\t\"{#INT}\":\"$key\"\n";
 
-        # End of fields delimeter
-        print "\t}\n";
+            # End of fields delimeter
+            print "\t}\n";
+        }
     }
 
     # Display JSON footer
