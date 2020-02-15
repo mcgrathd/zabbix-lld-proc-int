@@ -244,7 +244,7 @@ can be found at the L<Zabbix LLD documentation|https://www.zabbix.com/documentat
 
 =item helpMesage()
 
-Show the usage for the problem and then exit.
+Show the usage for the program and exit.
 
 =back
 
