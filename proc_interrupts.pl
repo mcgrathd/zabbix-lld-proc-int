@@ -148,7 +148,14 @@ sub displayInterrupts {
             print "\t\t\"{#INT}\":\"$key\"\n";
 
             # End of fields delimeter
-            print "\t},\n";
+            if ($cpu eq $lastCpu and $key eq $lastField)
+            {
+                # The last entry can't have a semicolon
+                print "\t}\n";
+            } else {
+                # Everything else needs a semicolon
+                print "\t},\n";
+            }
         }
     }
 
