@@ -101,7 +101,8 @@ sub displayInterrupts {
 	if ($optCpu and $optInt) {
 		# Single item display and exit
 		print "DEBUG: $optCpu\n" if $optDebug;
-		print "$interrupts{$optCpu}->{$optInt}\n";
+		# Return the value or empty string if undefined
+		print "$interrupts{$optCpu}->{$optInt}\n" if defined $interrupts{$optCpu}->{$optInt};
 		exit;
 	}
 
