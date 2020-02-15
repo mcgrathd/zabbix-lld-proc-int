@@ -105,7 +105,8 @@ sub displayInterrupts {
 		$optCpu = uc($optCpu);
 		$optInt = uc($optInt);
 
-		print "DEBUG: $optCpu\n" if $optDebug;
+		print "DEBUG: \$optCpu = $optCpu\n" if $optDebug;
+		print "DEBUG: \$optInt = $optInt\n" if $optDebug;
 		# Return the value or empty string if undefined
 		print "$interrupts{$optCpu}->{$optInt}\n" if defined $interrupts{$optCpu}->{$optInt};
 		exit;
