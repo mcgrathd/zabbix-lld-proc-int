@@ -148,7 +148,11 @@ sub helpMessage {
     print "\t-c, --cpu\t\t\tCPU name\n";
     print "\t-i, --int\t\t\tInterrupt name\n";
     print "\t-d, --debug\t\t\tEnable debug prints\n";
-    print "\t-h, --help\t\t\tThis help\n";
+    print "\t-h, --help\t\t\tThis help\n\n";
+
+	print "You must either pass both the --cpu and --int options, or neither of\n";
+	print "them. The format of the --cpu option is CPU#, where # is a positive\n";
+	print "integer. For convenience, the system will uppercase the value for you.\n";
 
     exit;
 }
@@ -206,6 +210,10 @@ Options:
 	-i, --int			Interrupt name
 	-d, --debug			Enable debug prints
 	-h, --help			This help
+
+You must either pass both the B<--cpu> and B<--int> options, or neither of
+them. The format of the B<--cpu> option is B<CPU#>, where B<#> is a positive
+integer. For convenience, the system will uppercase the value for you.
 
 =head1 DESCRIPTION
 
