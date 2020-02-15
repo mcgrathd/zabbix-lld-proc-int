@@ -97,6 +97,14 @@ sub parseInterrupts {
 
 
 sub displayInterrupts {
+	# Is $optCpu or $optInt passed?
+	if ($optCpu and $optInt) {
+		# Single item display and exit
+		print "DEBUG: $optCpu\n" if $optDebug;
+		print "$interrupts{$optCpu}->{$optInt}\n";
+		exit;
+	}
+
     # Is this the first item?
     my $first = 1;
 
