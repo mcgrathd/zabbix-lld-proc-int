@@ -115,6 +115,22 @@ sub displayInterrupts {
     # Is this the first item?
     my $first = 1;
 
+    # What is the last cpu?
+    my $lastCpu;
+    foreach my $key (sort keys %interrupts)
+    {
+        $lastCpu = $key;
+    }
+    print "DEBUG: lastCpu = $lastCpu\n" if $optDebug;
+
+    # What is the last field for $lastCpu?
+    my $lastField;
+    foreach my $key (sort keys %{ $interrupts{$lastCpu} })
+    {
+        $lastField = $key;
+    }
+    print "DEBUG: lastField = $lastField\n" if $optDebug;
+
     # Display JSON header
     print "{\n";
     print "\t\"data\":[\n\n";
