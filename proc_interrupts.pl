@@ -156,6 +156,18 @@ BEGIN {
         'help|h'   => sub { helpMessage() },
     ) or die "Usage $0 --help\n";
 
+	# Check that we are calling either:
+	# 1. nothing, or
+	# 2. cpu and int, or
+	# 3. debug or help
+	if ($optCpu or $optInt) {
+		# die "You must specify both --cpu and --int. Exiting.";
+		if ($optCpu xor $optInt) {
+			print "Error: Both --cpu and --int must be set\n\n";
+			helpMessage;
+		}
+	}
+
     catInterrupts;
     parseInterrupts;
     displayInterrupts;
