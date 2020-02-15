@@ -154,7 +154,7 @@ BEGIN {
         'int|i=s'  => \$optInt,
         'debug|d'  => \$optDebug,
         'help|h'   => sub { helpMessage() },
-    ) or die "Usage $0 --help\n";
+    ) or helpMessage;
 
 	# Check that we are calling either:
 	# 1. nothing, or
