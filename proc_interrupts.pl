@@ -132,7 +132,7 @@ sub displayInterrupts {
             print "\t\t\"{#INT}\":\"$key\"\n";
 
             # End of fields delimeter
-            print "\t}\n";
+            print "\t},\n";
         }
     }
 
