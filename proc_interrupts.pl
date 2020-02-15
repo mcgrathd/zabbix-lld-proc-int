@@ -100,6 +100,11 @@ sub displayInterrupts {
 	# Is $optCpu or $optInt passed?
 	if ($optCpu and $optInt) {
 		# Single item display and exit
+
+		# Upper case values
+		$optCpu = uc($optCpu);
+		$optInt = uc($optInt);
+
 		print "DEBUG: $optCpu\n" if $optDebug;
 		# Return the value or empty string if undefined
 		print "$interrupts{$optCpu}->{$optInt}\n" if defined $interrupts{$optCpu}->{$optInt};
