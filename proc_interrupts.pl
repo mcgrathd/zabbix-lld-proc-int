@@ -13,6 +13,7 @@ use JSON;
 #
 # Globals
 #
+
 # Used to store /proc/interrupts
 my @lines;
 # Split storage of interrupts into key/value pairs
@@ -94,7 +95,8 @@ sub parseInterrupts {
       # Due to a limitation in Zabbix, we have to keep the data to less
       # than 64KB. As a work around, only display the named interrupts.
       # See https://support.zabbix.com/browse/ZBX-5863
-      $interrupts{$cpu}->{$fields[0]} = $fields[$cpuNum] unless $fields[0] =~ m/[[:digit:]]/;;
+      $interrupts{$cpu}->{$fields[0]} = $fields[$cpuNum]
+        unless $fields[0] =~ m/[[:digit:]]/;;
     }
   }
 }
@@ -121,18 +123,22 @@ sub displayInterrupts {
 
   # What is the last cpu?
   my $lastCpu;
+
   foreach my $key (sort keys %interrupts)
   {
     $lastCpu = $key;
   }
+
   print "DEBUG: lastCpu = $lastCpu\n" if $optDebug;
 
   # What is the last field for $lastCpu?
   my $lastField;
+
   foreach my $key (sort keys %{ $interrupts{$lastCpu} })
   {
     $lastField = $key;
   }
+
   print "DEBUG: lastField = $lastField\n" if $optDebug;
 
   # Store the JSON output
@@ -149,7 +155,6 @@ sub displayInterrupts {
 
   my $json = encode_json( $output );
   print $json . "\n";
-
 }
 
 
