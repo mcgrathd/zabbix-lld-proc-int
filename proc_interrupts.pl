@@ -91,7 +91,7 @@ sub parseInterrupts {
             $fields[0] =~ s/://;
 
             # Set the hash value
-            $interrupts{$cpu}->{$fields[0]} = $fields[$cpuNum];
+            $interrupts{$cpu}->{$fields[0]} = $fields[$cpuNum] unless $fields[0] =~ m/[[:digit:]]/;;
         }
     }
 }
