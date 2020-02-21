@@ -135,7 +135,7 @@ sub displayInterrupts {
   }
   print "DEBUG: lastField = $lastField\n" if $optDebug;
 
-  ##
+  # Store the JSON output
   my $data;
   foreach my $cpu (sort keys %interrupts)
   {
