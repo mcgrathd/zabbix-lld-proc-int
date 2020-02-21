@@ -8,6 +8,7 @@
 use warnings;
 use strict;
 use Getopt::Long qw(GetOptions);
+use JSON;
 
 #
 # Globals
@@ -131,37 +132,27 @@ sub displayInterrupts {
     }
     print "DEBUG: lastField = $lastField\n" if $optDebug;
 
-    # Display JSON header
-    print "{\n";
-    print "\t\"data\":[\n\n";
-
+    ##
+    my $data;
     foreach my $cpu (sort keys %interrupts)
     {
-        print "\t,\n" if not $first;
-        $first = 0;
-
-        # for each cpu, display the fields
         foreach my $key (sort keys %{ $interrupts{$cpu} })
         {
-            print "\t{\n";
-            print "\t\t\"{#CPU}\":\"$cpu\",\n";
-            print "\t\t\"{#INT}\":\"$key\"\n";
-
-            # End of fields delimeter
-            if ($cpu eq $lastCpu and $key eq $lastField)
-            {
-                # The last entry can't have a semicolon
-                print "\t}\n";
-            } else {
-                # Everything else needs a semicolon
-                print "\t},\n";
-            }
+            my $cpu_interrupt = {
+                '{#CPU}' => $cpu,
+                '{#INT}' => $key
+            };
+            push @$data, $cpu_interrupt;
         }
     }
 
-    # Display JSON footer
-    print "\n\t]\n";
-    print "}\n";
+    my $output = {
+        data => $data
+    };
+
+    my $json = encode_json( $output );
+    print $json . "\n";
+
 }
 
 
