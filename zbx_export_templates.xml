@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>4.0</version>
-    <date>2020-02-21T06:38:42Z</date>
+    <date>2020-02-21T06:57:22Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -84,7 +84,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Function call interrupts</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -149,7 +149,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Deferred Error APIC interrupts</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -279,7 +279,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Hyper-V reenlightenment interrupts</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -344,7 +344,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Hyper-V stimer0 interrupts</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -409,7 +409,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Hypervisor callback interrupts</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -474,7 +474,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>IRQ work interrupts</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -539,7 +539,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Local timer interrupts</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -604,7 +604,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Machine check exceptions</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -669,7 +669,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Machine check polls</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -799,7 +799,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Non-maskable interrupts</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -864,7 +864,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Nested posted-interrupt event</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -929,7 +929,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Posted-interrupt notification event</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -994,7 +994,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Posted-interrupt wakeup event</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -1124,7 +1124,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Rescheduling interrupts</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -1189,7 +1189,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>APIC ICR read retries</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -1254,7 +1254,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Spurious interrupts</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -1319,7 +1319,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Threshold APIC interrupts</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -1384,7 +1384,7 @@
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description/>
+                            <description>Thermal event interrupts</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
