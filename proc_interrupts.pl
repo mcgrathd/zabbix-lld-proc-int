@@ -91,6 +91,9 @@ sub parseInterrupts {
             $fields[0] =~ s/://;
 
             # Set the hash value
+            # Due to a limitation in Zabbix, we have to keep the data to less
+            # than 64KB. As a work around, only display the named interrupts.
+            # See https://support.zabbix.com/browse/ZBX-5863
             $interrupts{$cpu}->{$fields[0]} = $fields[$cpuNum] unless $fields[0] =~ m/[[:digit:]]/;;
         }
     }
