@@ -96,7 +96,7 @@ sub parseInterrupts {
       # than 64KB. As a work around, only display the named interrupts.
       # See https://support.zabbix.com/browse/ZBX-5863
       $interrupts{$cpu}->{$fields[0]} = $fields[$cpuNum]
-        unless $fields[0] =~ m/[[:digit:]]/;;
+        unless $fields[0] =~ m/[[:digit:]]/;
     }
   }
 }
