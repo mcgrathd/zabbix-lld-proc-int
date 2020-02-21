@@ -137,6 +137,7 @@ sub displayInterrupts {
 
   # Store the JSON output
   my $data;
+
   foreach my $cpu (sort keys %interrupts)
   {
     foreach my $key (sort keys %{ $interrupts{$cpu} })
