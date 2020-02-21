@@ -140,13 +140,7 @@ sub displayInterrupts {
 
   foreach my $cpu (sort keys %interrupts)
   {
-    foreach my $key (sort keys %{ $interrupts{$cpu} })
-    {
-      my $cpu_interrupt = {
-        '{#CPU}' => $cpu
-      };
-      push @$data, $cpu_interrupt;
-    }
+    push @$data, { '{#CPU}' => $cpu };
   }
 
   my $output = {
