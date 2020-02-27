@@ -113,8 +113,15 @@ sub displayInterrupts {
 
     print "DEBUG: \$optCpu = $optCpu\n" if $optDebug;
     print "DEBUG: \$optInt = $optInt\n" if $optDebug;
-    # Return the value or empty string if undefined
-    print "$interrupts{$optCpu}->{$optInt}\n" if defined $interrupts{$optCpu}->{$optInt};
+
+    # Return the value or 0 if undefined
+    if ( defined $interrupts{$optCpu}->{$optInt} ) {
+      print "$interrupts{$optCpu}->{$optInt}\n";
+    } else {
+      # Zabbix will display "more than 100 items" if we don't zero this
+      print "0\n";
+    }
+
     exit;
   }
 
